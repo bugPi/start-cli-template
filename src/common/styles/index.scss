@@ -1,0 +1,75 @@
+page {
+  background-color: #efefef;
+}
+
+.container {
+  @apply mx-3;
+}
+
+/* 字体图标 */
+@font-face {
+  font-family: CustomIcon;
+  src: url("../../static/iconfont/iconfont.ttf");
+}
+
+/* 隐藏腾讯地图logo */
+.csssprite {
+  display: none;
+}
+
+/* navbar */
+.status-bar {
+  height: var(--status-bar-height);
+}
+
+.uni-navbar-btn-text,
+.uni-nav-bar-text {
+  font-size: $uni-font-size-lg !important;
+  line-height: 22px;
+}
+
+.uni-nav-bar-text {
+  @apply font-semibold;
+}
+
+/* 用户头像 */
+.avatar {
+  @apply w-8 h-8 box-border p-1;
+  border-radius: 50%;
+  background-color: #f2e9da;
+}
+
+/* 字体主题默认颜色  */
+.text-primary {
+  color: #1e1e1e;
+}
+.text-success {
+  color: #0ccd9c;
+}
+.text-placeholder {
+  color: $uni-text-color-placeholder;
+}
+.text-gary {
+  color: $uni-text-color-grey;
+}
+
+/* button */
+.btn-primary,
+.uni-button[type="default"] {
+  background-color: $uni-color-primary !important;
+  color: #fff !important;
+  height: 42px;
+  line-height: 42px;
+}
+.back-round {
+  background: rgba(0, 0, 0, 0.6);
+}
+.icon-bolck {
+  background-color: #292929;
+}
+.back-round,
+.icon-bolck {
+  border-radius: 50%;
+  padding: 2px;
+  @apply w-8 h-8 flex justify-center items-center;
+}

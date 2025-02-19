@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# npm
+package-lock.json
+pnpm-lock.yaml
+.lock/
+
+# MacOS系统文件
+.DS_Store
+
+# Windows系统文件
+Thumbs.db
+
+# 编译输出目录
+dist/
+**/dist/
+
+# uniapp 编译生成的目录
+/unpackage/
+**/unpackage/
+
+# HBuilderX 编译生成的文件
+/HBuilderX/
+
+# IDE 配置文件
+.idea/
+.vscode/
+
+# 临时文件
+*.log
+*.bak
+
+# 其他不需要提交的文件
+*.swp
+*.swo
