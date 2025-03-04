@@ -59,6 +59,7 @@ export default defineConfig(({ command, mode }) => {
           rewrite: (path) => path.replace(/^\/api/, ""),
         },
       },
+      https: false,
     },
     transpileDependencies: ["@dcloudio/uni-ui"],
     // 定义环境变量
