@@ -7,13 +7,17 @@ import { visualizer } from "rollup-plugin-visualizer";
 import plugins from "./postcss.config";
 import legacy from "@vitejs/plugin-legacy";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import path from "path";
+import fs from "fs";
 
 const isH5 = process.env.UNI_PLATFORM === "h5";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const { VITE_API_BASE_URL: apiProxyUrl } = env;
+  const { VITE_API_BASE_URL: apiProxyUrl, VITE_HTTPS } = env;
+  const isHttps = VITE_HTTPS === "true";
+
   return {
     base: "./",
     plugins: [
@@ -59,7 +63,16 @@ export default defineConfig(({ command, mode }) => {
           rewrite: (path) => path.replace(/^\/api/, ""),
         },
       },
-      https: false,
+      https: isHttps
+        ? {
+            cert: fs.readFileSync(
+              path.resolve(__dirname, "./public/ssl/cert.crt")
+            ),
+            key: fs.readFileSync(
+              path.resolve(__dirname, "./public/ssl/cert.key")
+            ),
+          }
+        : false,
     },
     transpileDependencies: ["@dcloudio/uni-ui"],
     // 定义环境变量

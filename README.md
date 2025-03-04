@@ -127,3 +127,51 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
 ```
+
+### mkcert
+
+> mkcert 是什么？  
+> mkcert 是一个用于在本地生成 自签名 SSL/TLS 证书的工具，适用于本地开发环境。它可以快速创建受信任的 HTTPS 证书，避免浏览器的不安全警告。
+
+修改开发环境下的.env.development 文件
+
+```
+VITE_HTTPS=true
+```
+
+安装
+
+```
+pnpm install -g mkcert
+```
+
+**方式一：**
+
+创建证书
+
+```
+mkcert create-ca // 生成 CA 证书
+mkcert create-cert // 生成证书
+```
+
+执行上面的命令您将得到 ca.crt,ca.key,cert.pem,cert.key 四个文件。 将它们移入到 public/ssl 文件夹中完成 SSL 证书配置
+
+**方式二：**
+
+创建证书
+
+```
+mkcert -install // 创建安装 CA 证书
+mkcert -key-file localhost.key -cert-file localhost.crt localhost // 创建localhost的SSL证书
+
+```
+
+将生成的 localhost.crt 和 localhost.key 文件移动到 public/ssl 文件夹中。
+更改 vite.config.ts 文件中的 https 配置
+
+```
+https: {
+  key: fs.readFileSync('./public/ssl/localhost.key'),
+  cert: fs.readFileSync('./public/ssl/localhost.crt'),
+}
+```
