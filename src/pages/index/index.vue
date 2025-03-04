@@ -7,5 +7,5 @@
 
 <script setup lang="tsx">
 import { md5Hash } from '@/common/plugins/crypto';
-console.log(md5Hash('123456'), "md5Hash");
+console.log("[md5Hash]", md5Hash('123456'));
 </script>
